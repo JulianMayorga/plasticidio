@@ -1,6 +1,9 @@
 var volcanes_muertos = 0;
+var vida = 4;
 
 function crearVolcanes(numero) {
+
+    tiempo_volcan = 0;
     var volcanes = new Array(numero);
     var volcan = new $.gQ.Animation({
         imageURL: "img/volcan-atlas.png",
@@ -38,15 +41,25 @@ function crearVolcanes(numero) {
     return volcanes;
 }
 
-var count=0;
+var count = 0;
 
-var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
+var counter;
 
-function timer()
-{
-  count=count+1;
+function timer() {
+    count = count + 1;
 
- $("#timer").text(count + " secs"); // watch for spelling
+    $("#timer").text("Tiempo: " + count + " seg"); // watch for spelling
+}
+
+var tiempo_volcan = 0; //1000 will  run it every 1 second
+
+function timervolcan() {
+    tiempo_volcan += 1;
+    if (tiempo_volcan === 5) {
+        vida -= 1;
+
+        $("#vida").text("Vida: " + vida);
+    }
 }
 
 // Returns a random integer between min and max
@@ -59,7 +72,6 @@ var volcanes = [];
 
 $(function () {
     var tierra = new $.gQ.Animation({ imageURL: "img/tierra.png" });
-    var vida = 4;
     // sets the div to use to display the game and its dimension
     $("#playground").playground({ width: 480, height: 800 });
 
@@ -73,7 +85,10 @@ $(function () {
     $("#start").click(function () {
         $.playground().startGame(function () {
             $("#splash").remove();
-            $.playground().append("<span id='timer' class='tiempo' style='position: absolute; text-align: center; top: 0px; z-index:1000'>0 secs</span>");
+            counter = setInterval(timer, 1000); //1000 will  run it every 1 second
+            setInterval(timervolcan, 1000);
+            $.playground().append("<span id='timer' style='position: absolute; text-align: center; top: 0px; z-index:1000'>Tiempo: 0 seg</span>");
+            $.playground().append("<span id='vida' style='position: absolute; text-align: center; top: 20px; z-index:1000'>Vida: " + vida + "</span>");
 
             $.playground().addSprite("tierra", {
                 posx: 40,
