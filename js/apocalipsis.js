@@ -38,6 +38,17 @@ function crearVolcanes(numero) {
     return volcanes;
 }
 
+var count=0;
+
+var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
+
+function timer()
+{
+  count=count+1;
+
+ $("#timer").text(count + " secs"); // watch for spelling
+}
+
 // Returns a random integer between min and max
 // Using Math.round() will give you a non-uniform distribution!
 function getRandomInt(min, max) {
@@ -62,6 +73,7 @@ $(function () {
     $("#start").click(function () {
         $.playground().startGame(function () {
             $("#splash").remove();
+            $.playground().append("<span id='timer' class='tiempo' style='position: absolute; text-align: center; top: 0px; z-index:1000'>0 secs</span>");
 
             $.playground().addSprite("tierra", {
                 posx: 40,
