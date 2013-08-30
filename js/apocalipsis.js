@@ -1,24 +1,28 @@
 var volcanes_muertos = 0;
 var vida = 4;
+var count = 0;
+var counter;
+var volcanes = [];
+var tiempo_volcan = 0;
 
 function crearVolcanes(numero) {
 
     tiempo_volcan = 0;
-    var volcanes = new Array(numero);
+    volcanes = new Array(numero);
     var volcan = new $.gQ.Animation({
-        imageURL: "img/volcan-atlas.png",
-        numberOfFrame: 3,
-        delta: 56,
-        rate: 100,
-        type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_PINGPONG
+        imageURL: "img/volcanes.png",
+        numberOfFrame: 22,
+        delta: 200,
+        rate: 120,
+        type: $.gQ.ANIMATION_HORIZONTAL
     });
 
     for (var i = 0; i < numero; i++) {
         $.playground().addSprite("volcan" + i, {
-            posx: getRandomInt(60, 340),
-            posy: getRandomInt(200, 400),
-            height: 101,
-            width: 58,
+            posx: getRandomInt(90, 310),
+            posy: getRandomInt(230, 370),
+            height: 172,
+            width: 200,
             animation: volcan,
             geometry: $.gQ.GEOMETRY_RECTANGLE /* GEOMETRY_DISC GEOMETRY_RECTANGLE */
         });
@@ -41,22 +45,19 @@ function crearVolcanes(numero) {
     return volcanes;
 }
 
-var count = 0;
-
-var counter;
-
 function timer() {
     count = count + 1;
 
     $("#timer").text("Tiempo: " + count + " seg"); // watch for spelling
 }
 
-var tiempo_volcan = 0; //1000 will  run it every 1 second
-
 function timervolcan() {
     tiempo_volcan += 1;
     if (tiempo_volcan === 5) {
         vida -= 1;
+        $("#volcan1").pauseAnimation();
+        $("#volcan2").pauseAnimation();
+        $("#volcan0").pauseAnimation();
 
         $("#vida").text("Vida: " + vida);
     }
@@ -68,8 +69,6 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-var volcanes = [];
-
 $(function () {
     var tierra = new $.gQ.Animation({ imageURL: "img/tierra.png" });
     // sets the div to use to display the game and its dimension
@@ -78,6 +77,7 @@ $(function () {
     // configure the loading bar
     $.loadCallback(function (percent) {
         $("#loadBar").width(400 * percent);
+        console.log(percent)
         $("#loadtext").html("" + percent + "%");
     });
 
@@ -101,8 +101,8 @@ $(function () {
 
             //  Crear volcanes
             volcanes = crearVolcanes(3);
+            //meteoros = crearMeteoros(2);
 
         });
     });
-
 });
