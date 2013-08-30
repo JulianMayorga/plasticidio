@@ -1,3 +1,5 @@
+var volcanes_muertos = 0;
+
 function crearVolcanes(numero) {
     var volcanes = new Array(numero);
     var volcan = new $.gQ.Animation({
@@ -9,7 +11,6 @@ function crearVolcanes(numero) {
     });
 
     for (var i = 0; i < numero; i++) {
-        console.log(volcan);
         $.playground().addSprite("volcan" + i, {
             posx: getRandomInt(60, 340),
             posy: getRandomInt(200, 400),
@@ -17,15 +18,25 @@ function crearVolcanes(numero) {
             width: 58,
             animation: volcan,
             geometry: $.gQ.GEOMETRY_RECTANGLE /* GEOMETRY_DISC GEOMETRY_RECTANGLE */
-        })
+        });
+
+        volcanes.push(volcan);
 
         $("#volcan" + i).rotate(-15);
         var hammertime = $("#volcan" + i).hammer();
         console.log(hammertime);
         // the whole area
         hammertime.on("touch", function (ev) {
-            if (window.console) { console.log(ev); }
-            $(this).css("display", "none");
+            //if (window.console) { console.log(ev); }
+            // Remover meteorito
+            $(this).remove();
+            volcanes_muertos += 1;
+            console.log(volcanes);
+            if (volcanes_muertos === numero) {
+                crearVolcanes(getRandomInt(3, 6));
+                volcanes_muertos = 0;
+                console.log(volcanes);
+            }
         });
     }
     return volcanes;
@@ -37,8 +48,12 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+
+var volcanes = [];
+
 $(function () {
     var tierra = new $.gQ.Animation({ imageURL: "img/tierra.png" });
+    var vida = 4;
     // sets the div to use to display the game and its dimension
     $("#playground").playground({ width: 480, height: 800 });
 
@@ -51,7 +66,6 @@ $(function () {
     // register the start button and remove the splash screen once the game is ready to starts
     $("#start").click(function () {
         $.playground().startGame(function () {
-            var volcanes = [];
             $("#splash").remove();
 
             $.playground().addSprite("tierra", {
@@ -63,6 +77,7 @@ $(function () {
                 geometry: $.gQ.GEOMETRY_DISC /*GEOMETRY_DISC GEOMETRY_RECTANGLE*/
             })
 
+            //  Crear volcanes
             volcanes = crearVolcanes(3);
 
         });
