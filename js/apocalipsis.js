@@ -24,18 +24,14 @@ function crearVolcanes(numero) {
 
         $("#volcan" + i).rotate(-15);
         var hammertime = $("#volcan" + i).hammer();
-        console.log(hammertime);
         // the whole area
         hammertime.on("touch", function (ev) {
-            //if (window.console) { console.log(ev); }
             // Remover meteorito
             $(this).remove();
             volcanes_muertos += 1;
-            console.log(volcanes);
             if (volcanes_muertos === numero) {
                 crearVolcanes(getRandomInt(3, 6));
                 volcanes_muertos = 0;
-                console.log(volcanes);
             }
         });
     }
@@ -47,7 +43,6 @@ function crearVolcanes(numero) {
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
-
 
 var volcanes = [];
 
