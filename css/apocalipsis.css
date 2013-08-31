@@ -1,96 +1,21 @@
-.meteorito {
-    width: 40px;
-    height: 40px;
-    background-image: url("../img/asteroide.png");
-    display: none;
-    -webkit-animation: play .8s steps(8) infinite;
-    -moz-animation: play .8s steps(8) infinite;
-    -ms-animation: play .8s steps(8) infinite;
-    -o-animation: play .8s steps(8) infinite;
-    animation: play .8s steps(8) infinite;
-}
-
-.volcan {
-    width: 58px;
-    height: 101px;
-    background-image: url("../img/volcan.png");
-}
-
 #tierra_antes {
     top: 200px;
     left: 40px;
     position: absolute;
 }
 
-@-webkit-keyframes play {
-    from {
-        background-position: 0px;
-    }
-
-    to {
-        background-position: -320px;
-    }
+#score {
+    display: none;
 }
 
-@-moz-keyframes play {
-    from {
-        background-position: 0px;
-    }
-
-    to {
-        background-position: -320px;
-    }
+#playground {
+    text-align: center;
 }
 
-@-ms-keyframes play {
-    from {
-        background-position: 0px;
-    }
-
-    to {
-        background-position: -320px;
-    }
-}
-
-@-o-keyframes play {
-   from { background-position:    0px; }
-     to { background-position: -320px; }
-}
-
-@keyframes play {
-    from {
-        background-position: 0px;
-    }
-
-    to {
-        background-position: -320px;
-    }
-}
-
-html, body {
-    width: 100%;
-    height: 100%;
-    min-width: 480px;
-    margin: 0;
-    border: 0;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    position: absolute;
-    background-color: #808080;
-}
-
-@font-face {
-    font-family: 'Tagesschrift';
-    src: url('tagesschrift.ttf');
-}
-
-#splash {
+#start {
     font-family: 'Faster One', Georgia, serif;
     font-size: 2em;
     text-align: center;
-    position: absolute;
-    top: 100px;
-    left: 150px;
 }
 
 #reiniciar {
@@ -98,9 +23,6 @@ html, body {
     font-family: 'Faster One', Georgia, serif;
     font-size: 2em;
     text-align: center;
-    position: absolute;
-    top: 100px;
-    left: 150px;
 }
 
 #titulo {
@@ -108,9 +30,6 @@ html, body {
     font-family: 'Faster One', Georgia, serif;
     color: #054b00;
     text-align: center;
-    position: absolute;
-    top: 50px;
-    left: 120px;
 }
 
 span {

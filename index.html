@@ -8,18 +8,29 @@
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
         <script type="text/javascript" src="lib/jquery.gamequery-0.7.1.js"></script>
         <script type="text/javascript" src="lib/jquery.hammer.min.js"></script>
+        <link href="css/foundation.min.css" rel="stylesheet" type="text/css">
         <link href="css/apocalipsis.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="js/apocalipsis.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
         <link href="http://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div id="playground">
-            <img id="tierra_antes" src="img/tierra.png" alt="tierra" />
-            <a id="titulo">Plasticidio</a>
-            <a id="reiniciar">Reiniciar</a>
-            <div id="splash">
-                <a id="start">Empezar</a>
+        <div id="gui" class="row">
+            <div class="row">
+                <div id="titulo" class="twelve columns">Plasticidio</div>
+            </div>
+            <div class="row">
+                <a class="twelve columns" id="start">Empezar</a>
+            </div>
+            <div class="row">
+                <span class="twelve columns" id="score">Aguantaste los ataques por 0 seg</span>
+            </div>
+            <div class="row">
+                <a class="twelve columns" id="reiniciar">Reiniciar</a>
+            </div>
+        </div>
+        <div class="row">
+            <div id="playground" class="twelve columns">
+                <img id="tierra_antes" src="img/tierra.png" alt="tierra" />
             </div>
         </div>
     </body>

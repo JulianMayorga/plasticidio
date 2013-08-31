@@ -1,13 +1,13 @@
 var volcanes_muertos = 0;
-var tiempo_restante = 4;
+var tiempo_restante = 3;
 var count = 0;
 var counter;
-var splash;
+var start;
 var volcanes = [];
 
 function crearVolcanes(numero) {
 
-    tiempo_restante = 4;
+    tiempo_restante = 3;
     volcanes = new Array(numero);
     var volcan = new $.gQ.Animation({
         imageURL: "img/volcan02.png",
@@ -59,8 +59,8 @@ function timervolcan() {
         $("#reiniciar").css("display", "inline").click(restartGame);
         $("#tiempo_restante").detach();
         $("#timer").detach();
-        $.playground().append("<span style='position: absolute; text-align: center; top: 0px; z-index:1000'>Aguantaste los ataques por " + count + " seg</span>");
-        // Volver a pantalla de inicio
+        $("#score").css("display", "inline");
+        $("#score").text("Aguantaste los ataques por " + count + " seg");// Volver a pantalla de inicio
     }
 }
 
@@ -81,15 +81,15 @@ $(function () {
     // register the start button and remove the splash screen once the game is ready to starts
     $("#start").click(function () {
         $.playground().startGame(function () {
-            splash = $("#splash").detach();
-            splash = $("#titulo").detach();
+            start = $("#start").detach();
+            $("#titulo").detach();
             counter = setInterval(timer, 1000); //1000 will  run it every 1 second
             setInterval(timervolcan, 1000);
-            $.playground().append("<span id='timer' style='position: absolute; left: 150px; top: 0px; z-index:1000'>Tiempo: 0 seg</span>");
+            $("#gui").append("<span id='timer' style='position: absolute; left: 150px; top: 0px; z-index:1000'>Tiempo: 0 seg</span>");
 
             //  Crear volcanes
             volcanes = crearVolcanes(3);
-            $.playground().append("<span id='tiempo_restante' style='position: absolute; left: 150px;; top: 40px; z-index:1000; color: rgb(124, 0, 0)'>Tierra explota en "
+            $("#gui").append("<span id='tiempo_restante' style='position: absolute; left: 150px;; top: 40px; z-index:1000; color: rgb(124, 0, 0)'>Tierra explota en "
     + tiempo_restante + "!</span>");
             //meteoros = crearMeteoros(2);
 
