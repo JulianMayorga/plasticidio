@@ -1,5 +1,5 @@
 var volcanes_muertos = 0;
-var tiempo_restante = 3;
+var tiempo_restante = 5;
 var count = 0;
 var counter;
 var start;
@@ -11,7 +11,7 @@ var volcan_loop;
 
 function crearVolcanes(numero) {
 
-    tiempo_restante = 3;
+    tiempo_restante = 5;
     volcanes = new Array(numero);
     var volcan = new $.gQ.Animation({
         imageURL: "img/volcan01.png",
@@ -64,7 +64,7 @@ function playIdleAnimation(node)
 
 function timer() {
     count = count + 1;
-    $("#timer").text("Tiempo: " + count + " seg"); // watch for spelling
+    $("#timer").text("Sobreviviste: " + count + " seg"); // watch for spelling
 }
 
 function timervolcan() {
