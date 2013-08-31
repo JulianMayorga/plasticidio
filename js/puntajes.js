@@ -14,7 +14,6 @@ $(function () {
         jugadores.forEach(function (element, index, array) {
             $("#jugadores").append("<li><div class='jugador large button expand'>" + element.nombre + ": " + element.puntaje + " seg</div></li>");
         })
-        console.log(jugadores);
     });
 });
 

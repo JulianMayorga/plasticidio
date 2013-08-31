@@ -72,9 +72,6 @@ function timervolcan() {
 }
 
 function restartGame() {
-    // Set some data to the generated location
-    //console.log(nombre);
-    //console.log(count);
     window.location.reload();
 }
 
@@ -90,11 +87,6 @@ function getRandomInt(min, max) {
 
 $(function () {
     listRef = new Firebase('https://plasticidio.firebaseio.com/');
-    listRef.on('child_added', function (snapshot) {
-        var msgData = snapshot.val();
-        jugadores.push(msgData.user_id + ": " + msgData.text + "seg");
-        console.log(jugadores);
-    });
     // Generate a reference to a new location with push
     newPushRef = listRef.push();
 
@@ -117,7 +109,6 @@ $(function () {
             $("#countdown").css("display", "inline");
             //  Crear volcanes
             volcanes = crearVolcanes(3);
-            //meteoros = crearMeteoros(2);
 
         });
     });
