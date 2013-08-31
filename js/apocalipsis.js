@@ -35,6 +35,13 @@ $(function () {
             })
 
             $("#volcan").rotate(-15);
+            var hammertime = $("#volcan").hammer();
+            console.log(hammertime);
+            // the whole area
+            hammertime.on("touch", function (ev) {
+                if (window.console) { console.log(ev); }
+                $(this).css("display", "none");
+            });
         });
     });
 
