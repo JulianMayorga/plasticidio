@@ -3,12 +3,11 @@
     height: 40px;
     background-image: url("../img/asteroide.png");
     display: none;
-    
     -webkit-animation: play .8s steps(8) infinite;
-       -moz-animation: play .8s steps(8) infinite;
-        -ms-animation: play .8s steps(8) infinite;
-         -o-animation: play .8s steps(8) infinite;
-            animation: play .8s steps(8) infinite;
+    -moz-animation: play .8s steps(8) infinite;
+    -ms-animation: play .8s steps(8) infinite;
+    -o-animation: play .8s steps(8) infinite;
+    animation: play .8s steps(8) infinite;
 }
 
 .volcan {
@@ -18,18 +17,33 @@
 }
 
 @-webkit-keyframes play {
-   from { background-position:    0px; }
-     to { background-position: -320px; }
+    from {
+        background-position: 0px;
+    }
+
+    to {
+        background-position: -320px;
+    }
 }
 
 @-moz-keyframes play {
-   from { background-position:    0px; }
-     to { background-position: -320px; }
+    from {
+        background-position: 0px;
+    }
+
+    to {
+        background-position: -320px;
+    }
 }
 
 @-ms-keyframes play {
-   from { background-position:    0px; }
-     to { background-position: -320px; }
+    from {
+        background-position: 0px;
+    }
+
+    to {
+        background-position: -320px;
+    }
 }
 
 @-o-keyframes play {
@@ -38,14 +52,27 @@
 }
 
 @keyframes play {
-   from { background-position:    0px; }
-     to { background-position: -320px; }
+    from {
+        background-position: 0px;
+    }
+
+    to {
+        background-position: -320px;
+    }
 }
 
 #start {
     color: #fff;
 }
 
-html {
-    background-color: #000;
+html, body {
+    width: 100%;
+    height: 100%;
+    min-width: 480px;
+    min-height: 800px;
+    margin: 0;
+    border: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
 }

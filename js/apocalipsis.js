@@ -3,7 +3,7 @@ $(function () {
     var tierra = new $.gQ.Animation({ imageURL: "img/tierra.png" });
     var volcan = new $.gQ.Animation({ imageURL: "img/volcan.png" });
     // sets the div to use to display the game and its dimension
-    $("#playground").playground({ width: 480, height: 800 });
+    $("#playground").playground({ width: 480, height: 800 }).css("background-color", "red");
 
     // configure the loading bar
     $.loadCallback(function (percent) {
