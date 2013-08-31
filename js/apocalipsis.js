@@ -3,7 +3,9 @@ var tiempo_restante = 3;
 var count = 0;
 var counter;
 var start;
+var nombre;
 var volcanes = [];
+var listRef, newPushRef;
 
 function crearVolcanes(numero) {
 
@@ -52,20 +54,31 @@ function timer() {
 
 function timervolcan() {
     tiempo_restante -= 1;
-    $("#countdown").text("Tierra explota en " + tiempo_restante + "!");
+
+    $('#conteo-final').text(tiempo_restante + "!");
+
     if (tiempo_restante === 0) {
         // Destruir escena
         // Mostrar score
+        window.clearTimeout(counter);
+        submitScore();
         $("#reiniciar").css("display", "inline").click(restartGame);
         $("#countdown").detach();
         $("#timer").detach();
         $("#score").css("display", "inline");
-        $("#score").text("Aguantaste los ataques por " + count + " seg"); // Volver a pantalla de inicio
+        $("#segundos").text(count); // Volver a pantalla de inicio
     }
 }
 
 function restartGame() {
+    // Set some data to the generated location
+    //console.log(nombre);
+    //console.log(count);
     window.location.reload();
+}
+
+function submitScore() {
+    newPushRef.set({ user_id: nombre, text: count });
 }
 
 // Returns a random integer between min and max
@@ -75,6 +88,10 @@ function getRandomInt(min, max) {
 }
 
 $(function () {
+    listRef = new Firebase('https://plasticidio.firebaseio.com/');
+    // Generate a reference to a new location with push
+    newPushRef = listRef.push();
+
     // sets the div to use to display the game and its dimension
     $("#playground").playground({ width: $(window).width(), height: $(window).height() });
 
@@ -83,6 +100,10 @@ $(function () {
         $.playground().startGame(function () {
             start = $("#start").detach();
             $("#titulo").detach();
+            $("#nombre-input").css("display", "none");
+            $("#nombre").css("display", "block");
+            nombre = $("#nombre-input").val();
+            $("#nombre").text(nombre);
             counter = setInterval(timer, 1000); //1000 will  run it every 1 second
             setInterval(timervolcan, 1000);
             $("#timer").css("display", "inline");

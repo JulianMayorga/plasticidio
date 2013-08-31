@@ -9,14 +9,36 @@ html, body {
 #score {
     display: none;
     text-align: center;
+    font-size: 2em;
+    font-family: 'Faster One', Georgia, serif;
 }
 
 #playground {
     text-align: center;
 }
 
+#segundos {
+    display: inline;
+    color: #2ba6cb;
+}
+
+#nombre {
+    font-size: 2em;
+    font-family: 'Faster One', Georgia, serif;
+    color: #2ba6cb;
+    display: none;
+    text-align: center;
+}
+
+#conteo-final {
+    display: inline;
+    color: #f00;
+}
+
 #countdown {
     text-align: center;
+    font-size: 2em;
+    font-family: 'Faster One', Georgia, serif;
 }
 
 #timer {
