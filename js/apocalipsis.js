@@ -1,9 +1,15 @@
 function crearVolcanes(numero) {
     var volcanes = new Array(numero);
-    var volcan = new $.gQ.Animation({ imageURL: "img/volcan.png" });
+    var volcan = new $.gQ.Animation({
+        imageURL: "img/volcan-atlas.png",
+        numberOfFrame: 3,
+        delta: 56,
+        rate: 100,
+        type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_PINGPONG
+    });
 
     for (var i = 0; i < numero; i++) {
-        console.log(volcanes);
+        console.log(volcan);
         $.playground().addSprite("volcan" + i, {
             posx: getRandomInt(60, 340),
             posy: getRandomInt(200, 400),
@@ -28,7 +34,7 @@ function crearVolcanes(numero) {
 // Returns a random integer between min and max
 // Using Math.round() will give you a non-uniform distribution!
 function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 $(function () {
