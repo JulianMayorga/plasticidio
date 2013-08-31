@@ -19,13 +19,13 @@ html, body {
 
 #segundos {
     display: inline;
-    color: #2ba6cb;
+    color: #CB2BBE;
 }
 
 #nombre {
     font-size: 2em;
     font-family: 'Faster One', Georgia, serif;
-    color: #2ba6cb;
+    color: #CB2BBE;
     display: none;
     text-align: center;
 }

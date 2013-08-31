@@ -3,7 +3,8 @@ var tiempo_restante = 3;
 var count = 0;
 var counter;
 var start;
-var nombre;
+var nombre = "Nombre Misterioso";
+var jugadores = [];
 var volcanes = [];
 var listRef, newPushRef;
 
@@ -89,6 +90,11 @@ function getRandomInt(min, max) {
 
 $(function () {
     listRef = new Firebase('https://plasticidio.firebaseio.com/');
+    listRef.on('child_added', function (snapshot) {
+        var msgData = snapshot.val();
+        jugadores.push(msgData.user_id + ": " + msgData.text + "seg");
+        console.log(jugadores);
+    });
     // Generate a reference to a new location with push
     newPushRef = listRef.push();
 
@@ -102,7 +108,9 @@ $(function () {
             $("#titulo").detach();
             $("#nombre-input").css("display", "none");
             $("#nombre").css("display", "block");
-            nombre = $("#nombre-input").val();
+            if ($("#nombre-input").val()) {
+                nombre = $("#nombre-input").val();
+            }
             $("#nombre").text(nombre);
             counter = setInterval(timer, 1000); //1000 will  run it every 1 second
             setInterval(timervolcan, 1000);
