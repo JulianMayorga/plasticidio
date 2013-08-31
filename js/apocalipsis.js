@@ -34,7 +34,7 @@ function getRandomInt(min, max) {
 $(function () {
     var tierra = new $.gQ.Animation({ imageURL: "img/tierra.png" });
     // sets the div to use to display the game and its dimension
-    $("#playground").playground({ width: 480, height: 800 }).css("background-color", "red");
+    $("#playground").playground({ width: 480, height: 800 });
 
     // configure the loading bar
     $.loadCallback(function (percent) {
