@@ -1,13 +1,13 @@
 var volcanes_muertos = 0;
-var vida = 4;
+var tiempo_restante = 5;
 var count = 0;
 var counter;
+var vida = 1;
 var volcanes = [];
-var tiempo_volcan = 0;
 
 function crearVolcanes(numero) {
 
-    tiempo_volcan = 0;
+    tiempo_restante = 3;
     volcanes = new Array(numero);
     var volcan = new $.gQ.Animation({
         imageURL: "img/volcan02.png",
@@ -37,7 +37,7 @@ function crearVolcanes(numero) {
             $(this).remove();
             volcanes_muertos += 1;
             if (volcanes_muertos === numero) {
-                crearVolcanes(getRandomInt(3, 6));
+                crearVolcanes(getRandomInt(1, 1 + count * 0.1));
                 volcanes_muertos = 0;
             }
         });
@@ -52,10 +52,13 @@ function timer() {
 }
 
 function timervolcan() {
-    tiempo_volcan += 1;
-    if (tiempo_volcan === 5) {
+    tiempo_restante -= 1;
+    $("#tiempo_restante").text("Tiempo restante: " + tiempo_restante);
+    if (tiempo_restante === 0) {
+        // Destruir escena
+        // Mostrar score
+        // Volver a pantalla de inicio
         vida -= 1;
-
         $("#vida").text("Vida: " + vida);
     }
 }
@@ -97,6 +100,8 @@ $(function () {
 
             //  Crear volcanes
             volcanes = crearVolcanes(3);
+            $.playground().append("<span id='tiempo_restante' style='position: absolute; text-align: center; top: 40px; z-index:1000'>Tiempo restante: "
+    + tiempo_restante + "</span>");
             //meteoros = crearMeteoros(2);
 
         });
