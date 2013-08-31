@@ -65,6 +65,13 @@ html, body {
     text-align: center;
 }
 
+.credito {
+    font-family: 'Faster One', Georgia, serif;
+    color: #CB2BBE;
+    text-align: center;
+    font-size: x-large;
+}
+
 span {
     font-size: 2em;
     font-family: 'Faster One', Georgia, serif;
