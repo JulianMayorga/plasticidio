@@ -2,6 +2,11 @@ html, body {
     background-color: #808080;
 }
 
+@font-face {
+  font-family: "Bubblegum";
+  src: url(../fonts/Bubblegum.ttf) format("truetype");
+}
+
 #tierra_container {
     text-align: center;
 }
@@ -10,7 +15,7 @@ html, body {
     display: none;
     text-align: center;
     font-size: 2em;
-    font-family: 'Faster One', Georgia, serif;
+    font-family: 'Bubblegum', Georgia, serif;
 }
 
 #playground {
@@ -24,7 +29,7 @@ html, body {
 
 #nombre {
     font-size: 2em;
-    font-family: 'Faster One', Georgia, serif;
+    font-family: 'Bubblegum', Georgia, serif;
     color: #CB2BBE;
     display: none;
     text-align: center;
@@ -38,7 +43,7 @@ html, body {
 #countdown {
     text-align: center;
     font-size: 2em;
-    font-family: 'Faster One', Georgia, serif;
+    font-family: 'Bubblegum', Georgia, serif;
 }
 
 #timer {
@@ -46,27 +51,27 @@ html, body {
 }
 
 #start, #puntajes {
-    font-family: 'Faster One', Georgia, serif;
+    font-family: 'Bubblegum', Georgia, serif;
     font-size: 2em;
     text-align: center;
 }
 
 #reiniciar {
     display: none;
-    font-family: 'Faster One', Georgia, serif;
+    font-family: 'Bubblegum', Georgia, serif;
     font-size: 2em;
     text-align: center;
 }
 
 #titulo {
     font-size: 3em;
-    font-family: 'Faster One', Georgia, serif;
+    font-family: 'Bubblegum', Georgia, serif;
     color: #054b00;
     text-align: center;
 }
 
-.credito {
-    font-family: 'Faster One', Georgia, serif;
+.credito, .jugador {
+    font-family: 'Bubblegum', Georgia, serif;
     color: #CB2BBE;
     text-align: center;
     font-size: x-large;
@@ -74,5 +79,5 @@ html, body {
 
 span {
     font-size: 2em;
-    font-family: 'Faster One', Georgia, serif;
+    font-family: 'Bubblegum', Georgia, serif;
 }
