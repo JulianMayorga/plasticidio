@@ -1,5 +1,5 @@
 html, body {
-    background-color: #808080;
+    background-color: #03040a;
 }
 
 @font-face {
@@ -12,6 +12,7 @@ html, body {
 }
 
 #score {
+    color: rgb(172, 168, 168);
     display: none;
     text-align: center;
     font-size: 2em;
@@ -41,12 +42,14 @@ html, body {
 }
 
 #countdown {
+    color: rgb(172, 168, 168);
     text-align: center;
     font-size: 2em;
     font-family: 'Bubblegum', Georgia, serif;
 }
 
 #timer {
+    color: rgb(172, 168, 168);
     text-align: center;
 }
 
