@@ -1,12 +1,13 @@
 var volcanes_muertos = 0;
-var tiempo_restante = 5;
+var tiempo_restante = 4;
 var count = 0;
 var counter;
+var splash;
 var volcanes = [];
 
 function crearVolcanes(numero) {
 
-    tiempo_restante = 3;
+    tiempo_restante = 4;
     volcanes = new Array(numero);
     var volcan = new $.gQ.Animation({
         imageURL: "img/volcan02.png",
@@ -46,20 +47,25 @@ function crearVolcanes(numero) {
 
 function timer() {
     count = count + 1;
-
     $("#timer").text("Tiempo: " + count + " seg"); // watch for spelling
 }
 
 function timervolcan() {
-    $("#tiempo_restante").text("Tierra explota en " + tiempo_restante + "!");
     tiempo_restante -= 1;
+    $("#tiempo_restante").text("Tierra explota en " + tiempo_restante + "!");
     if (tiempo_restante === 0) {
         // Destruir escena
-        volcanes_muertos = null; // Hack: Hace que no se llame a crearVolcanes
         // Mostrar score
+        $("#reiniciar").css("display", "inline").click(restartGame);
+        $("#tiempo_restante").detach();
+        $("#timer").detach();
+        $.playground().append("<span style='position: absolute; text-align: center; top: 0px; z-index:1000'>Aguantaste los ataques por " + count + " seg</span>");
         // Volver a pantalla de inicio
-
     }
+}
+
+function restartGame() {
+    window.location.reload();
 }
 
 // Returns a random integer between min and max
@@ -72,16 +78,11 @@ $(function () {
     // sets the div to use to display the game and its dimension
     $("#playground").playground({ width: 480, height: 800 });
 
-    // configure the loading bar
-    $.loadCallback(function (percent) {
-        $("#loadBar").width(400 * percent);
-        $("#loadtext").html("" + percent + "%");
-    });
-
     // register the start button and remove the splash screen once the game is ready to starts
     $("#start").click(function () {
         $.playground().startGame(function () {
-            $("#splash").remove();
+            splash = $("#splash").detach();
+            splash = $("#titulo").detach();
             counter = setInterval(timer, 1000); //1000 will  run it every 1 second
             setInterval(timervolcan, 1000);
             $.playground().append("<span id='timer' style='position: absolute; text-align: center; top: 0px; z-index:1000'>Tiempo: 0 seg</span>");
