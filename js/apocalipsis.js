@@ -10,18 +10,18 @@ function crearVolcanes(numero) {
     tiempo_volcan = 0;
     volcanes = new Array(numero);
     var volcan = new $.gQ.Animation({
-        imageURL: "img/volcanes.png",
-        numberOfFrame: 22,
+        imageURL: "img/volcan02.png",
+        numberOfFrame: 7,
         delta: 200,
         rate: 120,
-        type: $.gQ.ANIMATION_HORIZONTAL
+        type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_PINGPONG
     });
 
     for (var i = 0; i < numero; i++) {
         $.playground().addSprite("volcan" + i, {
             posx: getRandomInt(90, 310),
             posy: getRandomInt(230, 370),
-            height: 172,
+            height: 114,
             width: 200,
             animation: volcan,
             geometry: $.gQ.GEOMETRY_RECTANGLE /* GEOMETRY_DISC GEOMETRY_RECTANGLE */
@@ -55,9 +55,6 @@ function timervolcan() {
     tiempo_volcan += 1;
     if (tiempo_volcan === 5) {
         vida -= 1;
-        $("#volcan1").pauseAnimation();
-        $("#volcan2").pauseAnimation();
-        $("#volcan0").pauseAnimation();
 
         $("#vida").text("Vida: " + vida);
     }
@@ -77,7 +74,6 @@ $(function () {
     // configure the loading bar
     $.loadCallback(function (percent) {
         $("#loadBar").width(400 * percent);
-        console.log(percent)
         $("#loadtext").html("" + percent + "%");
     });
 
