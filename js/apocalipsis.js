@@ -105,7 +105,6 @@ $(function () {
     $("#start").click(function () {
         $.playground().startGame(function () {
             start = $("#start").detach();
-            $("#titulo").detach();
             $("#nombre-input").css("display", "none");
             $("#nombre").css("display", "block");
             if ($("#nombre-input").val()) {

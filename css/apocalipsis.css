@@ -45,7 +45,7 @@ html, body {
     text-align: center;
 }
 
-#start {
+#start, #puntajes {
     font-family: 'Faster One', Georgia, serif;
     font-size: 2em;
     text-align: center;
