@@ -86,7 +86,7 @@ html, body {
 
 #splash {
     font-family: 'Faster One', Georgia, serif;
-    font-size: x-large;
+    font-size: 2em;
     text-align: center;
     position: absolute;
     top: 100px;
@@ -96,7 +96,7 @@ html, body {
 #reiniciar {
     display: none;
     font-family: 'Faster One', Georgia, serif;
-    font-size: x-large;
+    font-size: 2em;
     text-align: center;
     position: absolute;
     top: 100px;
@@ -104,16 +104,16 @@ html, body {
 }
 
 #titulo {
-    font-size: xx-large;
+    font-size: 3em;
     font-family: 'Faster One', Georgia, serif;
     color: #054b00;
     text-align: center;
     position: absolute;
-    top: 10px;
+    top: 50px;
     left: 120px;
 }
 
 span {
-    font-size: x-large;
+    font-size: 2em;
     font-family: 'Faster One', Georgia, serif;
 }

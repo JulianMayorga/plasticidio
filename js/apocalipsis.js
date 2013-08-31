@@ -85,11 +85,11 @@ $(function () {
             splash = $("#titulo").detach();
             counter = setInterval(timer, 1000); //1000 will  run it every 1 second
             setInterval(timervolcan, 1000);
-            $.playground().append("<span id='timer' style='position: absolute; text-align: center; top: 0px; z-index:1000'>Tiempo: 0 seg</span>");
+            $.playground().append("<span id='timer' style='position: absolute; left: 150px; top: 0px; z-index:1000'>Tiempo: 0 seg</span>");
 
             //  Crear volcanes
             volcanes = crearVolcanes(3);
-            $.playground().append("<span id='tiempo_restante' style='position: absolute; text-align: center; top: 40px; z-index:1000; color: rgb(124, 0, 0)'>Tierra explota en "
+            $.playground().append("<span id='tiempo_restante' style='position: absolute; left: 150px;; top: 40px; z-index:1000; color: rgb(124, 0, 0)'>Tierra explota en "
     + tiempo_restante + "!</span>");
             //meteoros = crearMeteoros(2);
 
