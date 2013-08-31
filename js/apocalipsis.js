@@ -70,7 +70,6 @@ function getRandomInt(min, max) {
 }
 
 $(function () {
-    var tierra = new $.gQ.Animation({ imageURL: "img/tierra.png" });
     // sets the div to use to display the game and its dimension
     $("#playground").playground({ width: 480, height: 800 });
 
@@ -88,15 +87,6 @@ $(function () {
             setInterval(timervolcan, 1000);
             $.playground().append("<span id='timer' style='position: absolute; text-align: center; top: 0px; z-index:1000'>Tiempo: 0 seg</span>");
             $.playground().append("<span id='vida' style='position: absolute; text-align: center; top: 20px; z-index:1000'>Vida: " + vida + "</span>");
-
-            $.playground().addSprite("tierra", {
-                posx: 40,
-                posy: 200,
-                height: 400,
-                width: 400,
-                animation: tierra,
-                geometry: $.gQ.GEOMETRY_DISC /*GEOMETRY_DISC GEOMETRY_RECTANGLE*/
-            })
 
             //  Crear volcanes
             volcanes = crearVolcanes(3);
