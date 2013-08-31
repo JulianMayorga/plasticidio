@@ -1,13 +1,20 @@
-.meteorite {
+.meteorito {
     width: 40px;
     height: 40px;
-    background-image: url("../img/asteroids.png");
+    background-image: url("../img/asteroide.png");
+    display: none;
     
     -webkit-animation: play .8s steps(8) infinite;
        -moz-animation: play .8s steps(8) infinite;
         -ms-animation: play .8s steps(8) infinite;
          -o-animation: play .8s steps(8) infinite;
             animation: play .8s steps(8) infinite;
+}
+
+.volcan {
+    width: 58px;
+    height: 101px;
+    background-image: url("../img/volcan.png");
 }
 
 @-webkit-keyframes play {
@@ -32,5 +39,13 @@
 
 @keyframes play {
    from { background-position:    0px; }
-     to { background-position: -500px; }
+     to { background-position: -320px; }
+}
+
+#start {
+    color: #fff;
+}
+
+html {
+    background-color: #000;
 }
