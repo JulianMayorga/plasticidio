@@ -79,6 +79,10 @@ function submitScore() {
     newPushRef.set({ user_id: nombre, text: count });
 }
 
+function spawnearVolcanes () {
+    
+}
+
 // Returns a random integer between min and max
 // Using Math.round() will give you a non-uniform distribution!
 function getRandomInt(min, max) {
@@ -108,7 +112,9 @@ $(function () {
             $("#timer").css("display", "inline");
             $("#countdown").css("display", "inline");
             //  Crear volcanes
-            volcanes = crearVolcanes(3);
+            window.setTimeout(function () {
+                volcanes = crearVolcanes(1);
+            }, 1000);
 
         });
     });
