@@ -2,7 +2,6 @@ var volcanes_muertos = 0;
 var tiempo_restante = 5;
 var count = 0;
 var counter;
-var vida = 1;
 var volcanes = [];
 
 function crearVolcanes(numero) {
@@ -33,7 +32,6 @@ function crearVolcanes(numero) {
         var hammertime = $("#volcan" + i).hammer();
         // the whole area
         hammertime.on("touch", function (ev) {
-            // Remover meteorito
             $(this).remove();
             volcanes_muertos += 1;
             if (volcanes_muertos === numero) {
@@ -45,21 +43,14 @@ function crearVolcanes(numero) {
     return volcanes;
 }
 
-function timer() {
-    count = count + 1;
-
-    $("#timer").text("Tiempo: " + count + " seg"); // watch for spelling
-}
-
 function timervolcan() {
+    $("#tiempo_restante").text("Tierra explota en " + tiempo_restante + "!");
     tiempo_restante -= 1;
-    $("#tiempo_restante").text("Tiempo restante: " + tiempo_restante);
     if (tiempo_restante === 0) {
         // Destruir escena
+
         // Mostrar score
         // Volver a pantalla de inicio
-        vida -= 1;
-        $("#vida").text("Vida: " + vida);
     }
 }
 
@@ -83,15 +74,10 @@ $(function () {
     $("#start").click(function () {
         $.playground().startGame(function () {
             $("#splash").remove();
-            counter = setInterval(timer, 1000); //1000 will  run it every 1 second
-            setInterval(timervolcan, 1000);
-            $.playground().append("<span id='timer' style='position: absolute; text-align: center; top: 0px; z-index:1000'>Tiempo: 0 seg</span>");
-            $.playground().append("<span id='vida' style='position: absolute; text-align: center; top: 20px; z-index:1000'>Vida: " + vida + "</span>");
-
             //  Crear volcanes
             volcanes = crearVolcanes(3);
-            $.playground().append("<span id='tiempo_restante' style='position: absolute; text-align: center; top: 40px; z-index:1000'>Tiempo restante: "
-    + tiempo_restante + "</span>");
+            setInterval(timervolcan, 1000);
+            $.playground().append("<span id='tiempo_restante'>Tierra explota en " + tiempo_restante + "!</span>");
             //meteoros = crearMeteoros(2);
 
         });
