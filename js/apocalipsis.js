@@ -7,12 +7,20 @@ var nombre = "Nombre Misterioso";
 var jugadores = [];
 var volcanes = [];
 var listRef, newPushRef;
+var volcan_loop;
 
 function crearVolcanes(numero) {
 
     tiempo_restante = 3;
     volcanes = new Array(numero);
     var volcan = new $.gQ.Animation({
+        imageURL: "img/volcan01.png",
+        numberOfFrame: 20,
+        delta: 200,
+        rate: 120,
+        type: $.gQ.ANIMATION_HORIZONTAL | $.gQ.ANIMATION_ONCE | $.gQ.ANIMATION_CALLBACK
+    });
+    volcan_loop = new $.gQ.Animation({
         imageURL: "img/volcan02.png",
         numberOfFrame: 7,
         delta: 200,
@@ -27,7 +35,8 @@ function crearVolcanes(numero) {
             height: 114,
             width: 200,
             animation: volcan,
-            geometry: $.gQ.GEOMETRY_RECTANGLE /* GEOMETRY_DISC GEOMETRY_RECTANGLE */
+            geometry: $.gQ.GEOMETRY_RECTANGLE, /* GEOMETRY_DISC GEOMETRY_RECTANGLE */
+            callback: playIdleAnimation
         });
 
         volcanes.push(volcan);
@@ -46,6 +55,11 @@ function crearVolcanes(numero) {
         });
     }
     return volcanes;
+}
+
+function playIdleAnimation(node)
+{
+    $(node).setAnimation(volcan_loop);
 }
 
 function timer() {
@@ -77,10 +91,6 @@ function restartGame() {
 
 function submitScore() {
     newPushRef.set({ user_id: nombre, text: count });
-}
-
-function spawnearVolcanes () {
-    
 }
 
 // Returns a random integer between min and max
