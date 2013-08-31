@@ -19,8 +19,8 @@ function crearVolcanes(numero) {
 
     for (var i = 0; i < numero; i++) {
         $.playground().addSprite("volcan" + i, {
-            posx: getRandomInt(90, 310),
-            posy: getRandomInt(230, 370),
+            posx: getRandomInt($("#tierra").position().left, $("#tierra").position().left + 200),
+            posy: getRandomInt($("#tierra").position().top, $("#tierra").position().top + 200),
             height: 114,
             width: 200,
             animation: volcan,
@@ -52,15 +52,15 @@ function timer() {
 
 function timervolcan() {
     tiempo_restante -= 1;
-    $("#tiempo_restante").text("Tierra explota en " + tiempo_restante + "!");
+    $("#countdown").text("Tierra explota en " + tiempo_restante + "!");
     if (tiempo_restante === 0) {
         // Destruir escena
         // Mostrar score
         $("#reiniciar").css("display", "inline").click(restartGame);
-        $("#tiempo_restante").detach();
+        $("#countdown").detach();
         $("#timer").detach();
         $("#score").css("display", "inline");
-        $("#score").text("Aguantaste los ataques por " + count + " seg");// Volver a pantalla de inicio
+        $("#score").text("Aguantaste los ataques por " + count + " seg"); // Volver a pantalla de inicio
     }
 }
 
@@ -76,7 +76,7 @@ function getRandomInt(min, max) {
 
 $(function () {
     // sets the div to use to display the game and its dimension
-    $("#playground").playground({ width: 480, height: 800 });
+    $("#playground").playground({ width: $(window).width(), height: $(window).height() });
 
     // register the start button and remove the splash screen once the game is ready to starts
     $("#start").click(function () {
@@ -85,12 +85,10 @@ $(function () {
             $("#titulo").detach();
             counter = setInterval(timer, 1000); //1000 will  run it every 1 second
             setInterval(timervolcan, 1000);
-            $("#gui").append("<span id='timer' style='position: absolute; left: 150px; top: 0px; z-index:1000'>Tiempo: 0 seg</span>");
-
+            $("#timer").css("display", "inline");
+            $("#countdown").css("display", "inline");
             //  Crear volcanes
             volcanes = crearVolcanes(3);
-            $("#gui").append("<span id='tiempo_restante' style='position: absolute; left: 150px;; top: 40px; z-index:1000; color: rgb(124, 0, 0)'>Tierra explota en "
-    + tiempo_restante + "!</span>");
             //meteoros = crearMeteoros(2);
 
         });

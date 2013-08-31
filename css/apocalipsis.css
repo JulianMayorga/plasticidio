@@ -1,7 +1,9 @@
-#tierra_antes {
-    top: 200px;
-    left: 40px;
-    position: absolute;
+html, body {
+    background-color: #808080;
+}
+
+#tierra_container {
+    text-align: center;
 }
 
 #score {
@@ -9,6 +11,14 @@
 }
 
 #playground {
+    text-align: center;
+}
+
+#countdown {
+    text-align: center;
+}
+
+#timer {
     text-align: center;
 }
 
